@@ -79,13 +79,164 @@
       max-width: 600px;
     }
 
+    /* ---- Stats Row ---- */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+    }
+    .stat {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .stat i { width: 24px; height: 24px; color: #4fc3f7; }
+    .stat .num {
+      font-weight: 900;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+      color: #e8f1ff;
+    }
+    .stat .label {
+      font-size: 0.8rem;
+      color: #94a6bc;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    /* ---- Feature Highlight (rack section) ---- */
+    .feature-highlight {
+      background: #0d1b2e;
+      border: 1px solid rgba(79,195,247,0.2);
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .feature-highlight .fh-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .feature-highlight .fh-header .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(79,195,247,0.15);
+      color: #4fc3f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-highlight .fh-header .icon-box i { width: 24px; height: 24px; }
+    .feature-highlight .fh-header h3 {
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .feature-highlight .fh-header p {
+      color: #94a6bc;
+      font-size: 0.875rem;
+    }
+    .fh-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .fh-item {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .fh-item .fh-item-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fh-item .fh-item-header i { width: 16px; height: 16px; color: #4fc3f7; }
+    .fh-item .fh-item-header span {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .fh-item p {
+      color: #94a6bc;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Timeline ---- */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(79,195,247,0.12);
+      color: #4fc3f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .timeline-dot i { width: 18px; height: 18px; }
+    .timeline-content h4 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .timeline-content p {
+      color: #94a6bc;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Tech Tags ---- */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .tag {
+      background: rgba(79,195,247,0.1);
+      color: #4fc3f7;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(79,195,247,0.2);
+    }
+
     /* ---- Section ---- */
     .section-title {
       font-weight: 800;
       font-size: 1.5rem;
       letter-spacing: -0.01em;
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+    .section-title i { width: 22px; height: 22px; color: #4fc3f7; }
 
     /* ---- Card Grid ---- */
     .grid {
@@ -224,17 +375,44 @@
 
     <!-- Hero -->
     <div class="hero">
-      <div class="chip"><i data-lucide="user"></i> Developer</div>
+      <div class="chip"><i data-lucide="cpu"></i> Infrastructure & Software Engineer</div>
       <h1>Gregory <span>Hite</span></h1>
       <p class="subtitle">
-        TypeScript developer, homelab builder, and infrastructure enthusiast.
-        Currently helping Burtson Labs ship private AI workspaces and on-prem infrastructure.
+        TypeScript developer and infrastructure engineer. Designed the Raspberry Pi rack infrastructure
+        that powers Burtson Labs' Kubernetes cluster — running Bandit Stealth, the Agent Framework, and more.
+        I bridge the gap between hardware and software.
       </p>
     </div>
 
+    <!-- Stats Row -->
+    <section>
+      <div class="stats">
+        <div class="stat">
+          <i data-lucide="server"></i>
+          <span class="num">4+</span>
+          <span class="label">K8s Nodes</span>
+        </div>
+        <div class="stat">
+          <i data-lucide="box"></i>
+          <span class="num">2</span>
+          <span class="label">Pi Racks</span>
+        </div>
+        <div class="stat">
+          <i data-lucide="zap"></i>
+          <span class="num">99%</span>
+          <span class="label">Uptime</span>
+        </div>
+        <div class="stat">
+          <i data-lucide="git-branch"></i>
+          <span class="num">10+</span>
+          <span class="label">Repos</span>
+        </div>
+      </div>
+    </section>
+
     <!-- What I Build -->
     <section>
-      <h2 class="section-title">What I build</h2>
+      <h2 class="section-title"><i data-lucide="hammer"></i> What I build</h2>
       <div class="grid">
 
         <div class="card">
@@ -273,15 +451,173 @@
       </div>
     </section>
 
+    <!-- Pi Rack Feature Highlight -->
+    <section>
+      <div class="feature-highlight">
+        <div class="fh-header">
+          <div class="icon-box"><i data-lucide="box"></i></div>
+          <div>
+            <h3>Pi Rack Design</h3>
+            <p>Custom-built infrastructure powering Burtson Labs' Kubernetes cluster</p>
+          </div>
+        </div>
+        <div class="fh-grid">
+          <div class="fh-item">
+            <div class="fh-item-header">
+              <i data-lucide="zap"></i>
+              <span>Power Distribution</span>
+            </div>
+            <p>Redundant power supplies and PDU design ensuring each Pi node stays online during peak workloads.</p>
+          </div>
+          <div class="fh-item">
+            <div class="fh-item-header">
+              <i data-lucide="fan"></i>
+              <span>Cooling & Airflow</span>
+            </div>
+            <p>Active cooling with fan arrays and thermal monitoring to keep nodes stable under sustained Kubernetes workloads.</p>
+          </div>
+          <div class="fh-item">
+            <div class="fh-item-header">
+              <i data-lucide="network"></i>
+              <span>Network Architecture</span>
+            </div>
+            <p>Gigabit networking with proper cable management for inter-node communication and external traffic routing.</p>
+          </div>
+          <div class="fh-item">
+            <div class="fh-item-header">
+              <i data-lucide="hard-drive"></i>
+              <span>Storage & Persistence</span>
+            </div>
+            <p>External storage solutions for persistent volumes, backups, and container image caching across the cluster.</p>
+          </div>
+          <div class="fh-item">
+            <div class="fh-item-header">
+              <i data-lucide="shield-check"></i>
+              <span>Reliability</span>
+            </div>
+            <p>Designed for 99% uptime — the rack runs production workloads including the Bandit Stealth VS Code extension.</p>
+          </div>
+          <div class="fh-item">
+            <div class="fh-item-header">
+              <i data-lucide="settings"></i>
+              <span>Scalability</span>
+            </div>
+            <p>Modular rack design allows adding new Pi nodes as the Burtson Labs workload grows — from AI inference to CI/CD.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Powers Burtson Labs -->
+    <section>
+      <h2 class="section-title"><i data-lucide="rocket"></i> Powers Burtson Labs</h2>
+      <p style="color: #94a6bc; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.7;">
+        The Pi rack cluster hosts the Kubernetes infrastructure that runs Burtson Labs' product suite — from AI-powered developer tools to open-source MCP servers.
+      </p>
+      <div class="grid">
+        <div class="card">
+          <div class="icon-box"><i data-lucide="shield"></i></div>
+          <h3>Bandit Stealth</h3>
+          <p>VS Code / Cursor extension delivering local-first AI coding assistance. Runs inference workloads on the Pi cluster.</p>
+          <div class="tags">
+            <span class="tag">Ollama</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">LLM</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon-box"><i data-lucide="bot"></i></div>
+          <h3>Bandit Agent Framework</h3>
+          <p>CLI-based agent system with tool calling, session management, and subagent spawning. Hosted on the cluster.</p>
+          <div class="tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">CLI</span>
+            <span class="tag">Agents</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon-box"><i data-lucide="plug"></i></div>
+          <h3>MCP Servers</h3>
+          <p>Model Context Protocol servers enabling tool integration across AI agents and IDEs.</p>
+          <div class="tags">
+            <span class="tag">MCP</span>
+            <span class="tag">Tools</span>
+            <span class="tag">Integration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section>
+      <h2 class="section-title"><i data-lucide="clock"></i> The Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"><i data-lucide="code"></i></div>
+          <div class="timeline-content">
+            <h4>Started with TypeScript</h4>
+            <p>Built React applications and developer tooling, focusing on clean architecture and type-safe APIs.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"><i data-lucide="cpu"></i></div>
+          <div class="timeline-content">
+            <h4>Designed the Pi Rack</h4>
+            <p>Created the physical infrastructure — rack layout, power distribution, cooling, and networking — for a multi-node Raspberry Pi Kubernetes cluster.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"><i data-lucide="cloud"></i></div>
+          <div class="timeline-content">
+            <h4>Deployed Kubernetes</h4>
+            <p>Stood up K3s on the Pi cluster, configured Helm charts, ingress, and persistent storage for production workloads.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"><i data-lucide="sparkles"></i></div>
+          <div class="timeline-content">
+            <h4>Burtson Labs Goes Live</h4>
+            <p>The rack now powers Bandit Stealth, the Agent Framework, MCP servers, and the Burtson Labs website — all running on-prem.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section>
+      <h2 class="section-title"><i data-lucide="layers"></i> Tech Stack</h2>
+      <div class="tags">
+        <span class="tag">TypeScript</span>
+        <span class="tag">React</span>
+        <span class="tag">Vite</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">K3s</span>
+        <span class="tag">Helm</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">Nginx</span>
+        <span class="tag">Ollama</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Git</span>
+        <span class="tag">MUI</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">Networking</span>
+      </div>
+    </section>
+
     <!-- Links -->
     <section>
-      <h2 class="section-title">Find me</h2>
+      <h2 class="section-title"><i data-lucide="link"></i> Find me</h2>
       <div class="links">
         <a href="https://github.com/Burtson-Labs" target="_blank" rel="noopener" class="link-btn primary">
           <i data-lucide="github"></i> GitHub
         </a>
         <a href="https://burtson.ai" target="_blank" rel="noopener" class="link-btn outlined">
           <i data-lucide="external-link"></i> Burtson Labs
+        </a>
+        <a href="https://github.com/Burtson-Labs/bandit-stealth" target="_blank" rel="noopener" class="link-btn outlined">
+          <i data-lucide="shield"></i> Bandit Stealth
         </a>
       </div>
     </section>
