@@ -4,67 +4,296 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gregory Hite</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      background: #111827;
-      color: white;
-      font-family: Arial, sans-serif;
+      background: #0a0f18;
+      color: #e8f1ff;
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .page {
+      max-width: 880px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      background: #0d1b2e;
+      border-radius: 16px;
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 85% 0%, rgba(79,195,247,0.18) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero > * { position: relative; }
+
+    .chip {
+      display: inline-flex;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      gap: 6px;
+      background: rgba(79,195,247,0.15);
+      color: #4fc3f7;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(79,195,247,0.3);
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+    .chip i { width: 14px; height: 14px; }
+
+    .hero h1 {
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .hero h1 span { color: #4fc3f7; }
+
+    .hero .subtitle {
+      color: #94a6bc;
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ---- Section ---- */
+    .section-title {
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+
+    /* ---- Card Grid ---- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
     }
 
     .card {
-      text-align: center;
-      padding: 40px;
-      border-radius: 16px;
-      background: #1f2937;
-      max-width: 600px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      background: #111827;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      border-color: rgba(79,195,247,0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
 
-    h1 {
-      margin-bottom: 10px;
-      font-size: 3rem;
+    .icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(79,195,247,0.12);
+      color: #4fc3f7;
+      flex-shrink: 0;
+    }
+    .icon-box i { width: 20px; height: 20px; }
+
+    .card h3 {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .card p {
+      color: #94a6bc;
+      font-size: 0.875rem;
+      line-height: 1.7;
     }
 
-    p {
+    /* ---- Bullets ---- */
+    .bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .bullets li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
       color: #d1d5db;
-      line-height: 1.6;
+    }
+    .bullets li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #4fc3f7;
+      flex-shrink: 0;
     }
 
+    /* ---- Links Row ---- */
     .links {
-      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
     }
-
-    a {
-      color: #60a5fa;
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.875rem;
       text-decoration: none;
-      margin: 0 10px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .link-btn i { width: 16px; height: 16px; }
+    .link-btn.primary {
+      background: #4fc3f7;
+      color: #0d1b2e;
+    }
+    .link-btn.primary:hover { background: rgba(79,195,247,0.85); }
+    .link-btn.outlined {
+      border: 1px solid rgba(232,241,255,0.3);
+      color: #e8f1ff;
+    }
+    .link-btn.outlined:hover {
+      border-color: #e8f1ff;
+      background: rgba(255,255,255,0.04);
     }
 
-    a:hover {
-      text-decoration: underline;
+    /* ---- Footer CTA ---- */
+    .footer-cta {
+      background: #0d1b2e;
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-cta h3 {
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .footer-cta p {
+      color: #94a6bc;
+      font-size: 0.875rem;
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 32px 24px; }
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Gregory Hite</h1>
+  <div class="page">
 
-    <p>
-      TypeScript developer, homelab builder, Raspberry Pi cluster enthusiast, and game developer.
-    </p>
-
-    <p>Designed the rack layout for the Raspberry Pi cluster that powers all of <a href="https://burtson.ai">Burtson Labs</a> — cable management, power distribution, and cooling for a multi-node on-prem infrastructure.</p>
-
-    <div class="links">
-      <a href="https://github.com/Burtson-Labs">GitHub - Burtson Labs</a>
-      <a href="https://burtson.ai">Burtson Labs</a>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="chip"><i data-lucide="user"></i> Developer</div>
+      <h1>Gregory <span>Hite</span></h1>
+      <p class="subtitle">
+        TypeScript developer, homelab builder, and infrastructure enthusiast.
+        Currently helping Burtson Labs ship private AI workspaces and on-prem infrastructure.
+      </p>
     </div>
+
+    <!-- What I Build -->
+    <section>
+      <h2 class="section-title">What I build</h2>
+      <div class="grid">
+
+        <div class="card">
+          <div class="icon-box"><i data-lucide="code-2"></i></div>
+          <h3>TypeScript & Frontend</h3>
+          <p>React applications, component libraries, and developer tooling with a focus on clean architecture.</p>
+          <ul class="bullets">
+            <li>React 19 + Vite</li>
+            <li>MUI component systems</li>
+            <li>Type-safe APIs</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon-box"><i data-lucide="server"></i></div>
+          <h3>Homelab & Infrastructure</h3>
+          <p>Designed the rack layout for the Raspberry Pi cluster that powers all of Burtson Labs — cable management, power distribution, and cooling for a multi-node on-prem setup.</p>
+          <ul class="bullets">
+            <li>Raspberry Pi clusters</li>
+            <li>Kubernetes on-prem</li>
+            <li>Network & power design</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon-box"><i data-lucide="gamepad-2"></i></div>
+          <h3>Game Development</h3>
+          <p>Building games as a creative outlet — experimenting with engines, physics, and procedural generation.</p>
+          <ul class="bullets">
+            <li>Game engines & frameworks</li>
+            <li>Procedural generation</li>
+            <li>Physics simulation</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section>
+      <h2 class="section-title">Find me</h2>
+      <div class="links">
+        <a href="https://github.com/Burtson-Labs" target="_blank" rel="noopener" class="link-btn primary">
+          <i data-lucide="github"></i> GitHub
+        </a>
+        <a href="https://burtson.ai" target="_blank" rel="noopener" class="link-btn outlined">
+          <i data-lucide="external-link"></i> Burtson Labs
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer-cta">
+      <h3>Building things that work in the real world.</h3>
+      <p>From rack-mounted Pi clusters to production TypeScript — I care about the stuff between the code and the wall.</p>
+    </div>
+
   </div>
+
+  <script>lucide.createIcons();</script>
 </body>
 </html>
